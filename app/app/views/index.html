@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="UrbanBites">
+    <meta name="author" content="Kevin Nguyen">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      .jumbotron {
+        max-height: 350px;
+      }
+ 
+    </style>
+    <link rel="icon" href="../public/img/logo.ico">
+
+    <title>UrbanBites</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">UrbanBites</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">UrbanBites</h1>
+          <p>UrbanBites allows you to find that one restuarant with just a click</p>
+          <p>
+            <!-- 
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a>>\
+            -->
+            <!-- This form will contain the submission for for the user-->
+            <form action="/handler" method="POST">
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Location</label>
+                    <input type="text" name='location' class="form-control" id="validationDefault01" placeholder="Your Location"  required>
+                  </div>
+                  <div class="col-md-2 mb-3"> 
+                    <label for="validationDefault02">Category</label>                
+                    <select class="custom-select" name='category'>
+                      <option selected value="">Select Category:</option>
+                      <option value="8">Breakfast</option>
+                      <option value="9">Lunch</option>
+                      <option value="10">Dinner</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-2 mb-3">
+                      <label for="validationDefault05">Number of Restaurants</label>
+                      <select class="custom-select" name='numrestaurants'>
+                          <option selected value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="20">20</option>
+                        </select>   
+                  </div>
+                  <div class="col-md-2 mb-3">
+                    <label for="validationDefault03">Sort By</label>
+                    <select class="custom-select" name='sortby'>
+                        <option selected value="real_distance">Distance</option>
+                        <option value="rating">Rating</option>
+                      </select>                  
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit" >Search</button>
+              </form>
+          </p>
+        </div>
+      </div>
+
+      <!-- This Container Clas will contain the Google Maps View-->
+      <div style="width:80%;height:600px; margin: 0 auto; padding: 20px;">
+          <div id='map'></div>
+        </div>
+      <script>
+
+        function initMap() {
+
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: new google.maps.LatLng(-25.2744, 133.7751),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+
+
+
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA8F14NddCHCqOtWR9cAH_fFH839KS18Q&callback=initMap"
+      async defer></script>
+
+      <div class="container" style="padding:20px;">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div>
+            <p></p>
+            <p><a class="btn btn-secondary" href="#" role="button">Search More &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; UrbanBites 2018-2019</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
